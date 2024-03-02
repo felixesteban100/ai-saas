@@ -54,7 +54,7 @@ export default function MobileNav() {
                                         height={23}
                                         className="invert"
                                     />
-                                    <div className="flex justify-end items-center w-full">
+                                    <div className="flex-justify-end">
                                         <ModeToggle />
                                     </div>
                                 </div>
@@ -94,7 +94,7 @@ export default function MobileNav() {
                         <Link href="/sign-in">Login</Link>
                     </Button>
 
-                    <div className="flex justify-end items-center w-full">
+                    <div className="flex-justify-end">
                         <ModeToggle />
                     </div>
                 </SignedOut>

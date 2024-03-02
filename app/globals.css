@@ -105,6 +105,10 @@
     @apply flex justify-end items-center;
   }
 
+  .flex-justify-end{
+    @apply flex justify-end items-center w-full;
+  }
+
   /* ===== TYPOGRAPHY */
   /* 44 */
   .h1-semibold {
