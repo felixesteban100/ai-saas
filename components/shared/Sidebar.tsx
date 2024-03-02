@@ -26,6 +26,7 @@ export default function Sidebar() {
 
                                 return (
                                     <NavbarLinkELement
+                                        key={link.label}
                                         isActive={isActive}
                                         route={link.route}
                                         label={link.label}
@@ -41,6 +42,7 @@ export default function Sidebar() {
 
                                 return (
                                     <NavbarLinkELement
+                                        key={link.label}
                                         isActive={isActive}
                                         route={link.route}
                                         label={link.label}
