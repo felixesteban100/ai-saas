@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider"
 import { Providers } from "@/lib/Providers";
 
+
+//https://github.com/adrianhajdin/ai_saas_app/blob/main/types/index.d.ts
+
 const IBM_plex = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ['400', '500', '600', '700'],
