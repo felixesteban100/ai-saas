@@ -1,27 +1,12 @@
-'use client'
+"use client"
 
-import { usePathname, useSearchParams, useParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import FrozenRoute from './FrozenRoute'
 
 const PageAnimatePresence = ({ children }: { children: JSX.Element }) => {
     const pathname = usePathname()
     const searchParams = useSearchParams()
-    const params = useParams()
-
-    /* const conffirm = (pathname === "/rankings" && searchParams.get('fixedAttribute') !== undefined) || (pathname === "/characters" && searchParams.get('pageCharacters') !== undefined)
-
-    console.log(conffirm)
-
-    if (conffirm === true) {
-        return (
-            <AnimatePresence mode="popLayout">
-                <motion.div key={pathname}>
-                   {children}
-                </motion.div>
-            </AnimatePresence>
-        )
-    } */
 
     return (
         <AnimatePresence mode="wait">
