@@ -21,7 +21,6 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-
     },
     username:{
         type: String,
@@ -34,11 +33,9 @@ const userSchema = new Schema({
     },
     firstName: {
         type: String,
-        required: true
     },
     lastName: {
         type: String,
-        required: true
     },
     planId: {
         type: Number,  // reference to
@@ -50,6 +47,6 @@ const userSchema = new Schema({
     }
 })
 
-const User = models.User || model('User', userSchema)
+const User = models?.User || model('User', userSchema)
 
 export default User
