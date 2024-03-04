@@ -1,6 +1,6 @@
 import { Schema, model, models, Document } from 'mongoose'
 
-export interface IUser extends Document{
+/* export interface IUser extends Document{
     clerkId: string,
     email: string,
     username: string,
@@ -9,44 +9,44 @@ export interface IUser extends Document{
     lastName: string,
     planId: Number,
     creditBalance: Number,
-}
+} */
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
     clerkId: {
-        type: String,
-        required: true,
-        unique: true,
+      type: String,
+      required: true,
+      unique: true,
     },
     email: {
-        type: String,
-        required: true,
-        unique: true,
+      type: String,
+      required: true,
+      unique: true,
     },
-    username:{
-        type: String,
-        required: true,
-        unique: true,
+    username: {
+      type: String,
+      required: true,
+      unique: true,
     },
     photo: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     firstName: {
-        type: String,
+      type: String,
     },
     lastName: {
-        type: String,
+      type: String,
     },
     planId: {
-        type: Number,  // reference to
-        required: true
+      type: Number,
+      default: 1,
     },
-    creditBalance:{
-        type: Number,
-        requrired: true
-    }
-})
+    creditBalance: {
+      type: Number,
+      default: 10,
+    },
+  });
 
-const User = models?.User || model('User', userSchema)
+const User = models?.User || model('User', UserSchema)
 
 export default User
