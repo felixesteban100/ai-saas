@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb"; 
+import User from '@/lib/database/models/user.model'
 
 export function connectToCluster() {
     let mongoClient;
@@ -10,7 +11,7 @@ export function connectToCluster() {
         // console.log('Successfully connected to MongoDB Atlas!');
 
         const db = mongoClient.db('test');
-        const collection = db.collection<CreateUserParams>('user');
+        const collection = db.collection('user');
 
         // return mongoClient;
         return collection

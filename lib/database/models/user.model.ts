@@ -1,6 +1,6 @@
-import { Schema, model, models, Document } from 'mongoose'
+import { Schema, model, models/* , Document */ } from 'mongoose'
 
-export interface IUser extends Document{
+/* export interface IUser extends Document{
     clerkId: string,
     email: string,
     username: string,
@@ -9,7 +9,7 @@ export interface IUser extends Document{
     lastName: string,
     planId: Number,
     creditBalance: Number,
-}
+} */
 
 const UserSchema = new Schema({
     clerkId: {
