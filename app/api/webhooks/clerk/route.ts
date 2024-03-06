@@ -198,16 +198,16 @@ export async function POST(req: Request) {
     return new Response(newUser, { status: 200 })
   }
 
-  // DELETE
-  if (eventType === "user.deleted") {
-    const { id } = evt.data;
+  // // DELETE
+  // if (eventType === "user.deleted") {
+  //   const { id } = evt.data;
 
-    const deletedUser = await deleteUser(id!);
+  //   const deletedUser = await deleteUser(id!);
 
-    // return NextResponse.json({ message: "OK", user: deletedUser });
-    return new Response(deletedUser, { status: 200 })
+  //   // return NextResponse.json({ message: "OK", user: deletedUser });
+  //   return new Response(deletedUser, { status: 200 })
 
-  }
+  // }
 
   console.log(`Webhook with and ID of ${id} and type of ${eventType}`)
   console.log('Webhook body:', body)
