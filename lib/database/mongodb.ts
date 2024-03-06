@@ -4,7 +4,7 @@ export function connectToCluster() {
     let mongoClient;
 
     try {
-        mongoClient = new MongoClient(process.env.MONGODB_URI!);
+        mongoClient = new MongoClient(process.env.MONGODB_URL!);
         // console.log('Connecting to MongoDB Atlas cluster...');
         /* await */ mongoClient.connect();
         // console.log('Successfully connected to MongoDB Atlas!');
