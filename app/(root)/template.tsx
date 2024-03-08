@@ -17,7 +17,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       animate="enter"
       exit="out"
       transition={{ type: 'linear', duration: 0.5, delay: 0.1 }}
-      key="CHARACTERS_NEXT"
+      key="AI_SAAS"
       layout
     >
       {children}

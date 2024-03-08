@@ -20,7 +20,7 @@ export default function Sidebar() {
 
                 <nav className="sidebar-nav">
                     <SignedIn>
-                        <ul className="sidebar-nav_elements">
+                        <menu className="sidebar-nav_elements">
                             {navLinks.slice(0, 6).map((link) => {
                                 const isActive = link.route === pathname
 
@@ -34,9 +34,9 @@ export default function Sidebar() {
                                     />
                                 )
                             })}
-                        </ul>
+                        </menu>
 
-                        <ul className="sidebar-nav_elements">
+                        <menu className="sidebar-nav_elements">
                             {navLinks.slice(6).map((link) => {
                                 const isActive = link.route === pathname
 
@@ -53,7 +53,7 @@ export default function Sidebar() {
                             <li className="flex-center cursor-pointer gap-2 p-4">
                                 <UserButton afterSignOutUrl="/" showName />
                             </li>
-                        </ul>
+                        </menu>
                     </SignedIn>
 
                     <SignedOut>

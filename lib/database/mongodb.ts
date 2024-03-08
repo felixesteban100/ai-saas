@@ -1,7 +1,6 @@
-import { MongoClient } from "mongodb"; 
-import User from '@/lib/database/models/user.model'
+import { Document, MongoClient } from "mongodb"; 
 
-export function connectToCluster() {
+export function connectToCluster/* <Type extends Document> */(collectionName: string) {
     let mongoClient;
 
     try {
@@ -11,7 +10,7 @@ export function connectToCluster() {
         // console.log('Successfully connected to MongoDB Atlas!');
 
         const db = mongoClient.db('test');
-        const collection = db.collection('user');
+        const collection = db.collection/* <Type> */(collectionName);
 
         // return mongoClient;
         return collection
@@ -21,4 +20,5 @@ export function connectToCluster() {
     }
 }
 
-export const collectionUser = connectToCluster()
+export const collectionUser = connectToCluster/* <IUser> */('user')
+export const collectionImage = connectToCluster/* <IImage> */('image')

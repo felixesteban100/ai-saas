@@ -58,7 +58,7 @@ export default function MobileNav() {
                                         <ModeToggle />
                                     </div>
                                 </div>
-                                <ul className="header-nav_elements">
+                                <menu className="header-nav_elements">
                                     {navLinks.map((link) => {
                                         const isActive = link.route === pathname
 
@@ -82,7 +82,7 @@ export default function MobileNav() {
                                     {/* <li className="flex-center cursor-pointer gap-2 p-4">
                                         <UserButton afterSignOutUrl="/" showName />
                                     </li> */}
-                                </ul>
+                                </menu>
 
                             </>
                         </SheetContent>
