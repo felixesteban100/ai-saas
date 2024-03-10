@@ -102,7 +102,8 @@ export default function TransformationForm({ action, data = null, userId, type, 
                     if (newImage) {
                         form.reset()
                         setImage(data)
-                        router.push(`/transformations/${newImage._id}`)
+                        // router.push(`/transformations/${newImage._id}`)
+                        router.push(`/`)
                     }
                 } catch (error) {
                     console.log(error)
@@ -118,7 +119,8 @@ export default function TransformationForm({ action, data = null, userId, type, 
                     })
 
                     if (updatedImage) {
-                        router.push(`/transformations/${updatedImage._id}`)
+                        // router.push(`/transformations/${updatedImage._id}`)
+                        router.push(`/`)
                     }
                 } catch (error) {
                     console.log(error)
@@ -145,7 +147,7 @@ export default function TransformationForm({ action, data = null, userId, type, 
     }
 
     function onInputChangeHandler(fieldName: string, value: string, type: string, onChangeField: (value: string) => void) {
-        return debounce(() => {
+        debounce(() => {
             setNewTransformation((prevState: any) => ({
                 ...prevState,
                 [type]: {
@@ -154,11 +156,11 @@ export default function TransformationForm({ action, data = null, userId, type, 
                 }
             }))
 
-            return onChangeField(value)
-        }, 1000);
+        }, 1000)();
+
+        return onChangeField(value)
     }
 
-    // TODO: Update creditFee to something else 
     async function onTransformHandler() {
         setIsTransforming(true)
 
@@ -172,7 +174,7 @@ export default function TransformationForm({ action, data = null, userId, type, 
     }
 
     useEffect(() => {
-        if(image && (type === 'restore' || type === 'removeBackground')){
+        if (image && (type === 'restore' || type === 'removeBackground')) {
             setNewTransformation(transformationType.config)
         }
     }, [image, transformationType.config, type])
@@ -231,24 +233,25 @@ export default function TransformationForm({ action, data = null, userId, type, 
                                 />
                             )}
                         />
+
+                        {type === "recolor" && (
+                            <CustomField
+                                control={form.control}
+                                name="color"
+                                formLabel="Replacement Color"
+                                className="w-full"
+                                render={({ field }) => (
+                                    <Input
+                                        {...field}
+                                        className="input-field"
+                                        onChange={(e) => onInputChangeHandler('color', e.target.value, type, field.onChange)}
+                                    />
+                                )}
+                            />
+                        )}
                     </div>
                 )}
 
-                {type === "recolor" && (
-                    <CustomField
-                        control={form.control}
-                        name="color"
-                        formLabel="Replacement Color"
-                        className="w-full"
-                        render={({ field }) => (
-                            <Input
-                                {...field}
-                                className="input-field"
-                                onChange={(e) => onInputChangeHandler('color', e.target.value, type, field.onChange)}
-                            />
-                        )}
-                    />
-                )}
 
                 <div className="media-uploader-field">
                     <CustomField

@@ -21,7 +21,7 @@ export default function MobileNav() {
         <header className="header">
             <Link href={"/"} className="flex items-center gap-2 md:py-2">
                 <Image
-                    className="invert"
+                    className="svg-main-logo"
                     src={"/assets/images/logo-text.svg"}
                     alt="logo"
                     width={180}
@@ -33,7 +33,7 @@ export default function MobileNav() {
 
             <nav className="flex gap-2 items-center">
                 <SignedIn>
-                    <UserButton afterSignOutUrl="/" />
+                    <UserButton afterSignOutUrl="/" showName />
                     <Sheet>
                         <SheetTrigger asChild>
                             <Image
@@ -52,7 +52,7 @@ export default function MobileNav() {
                                         alt="logo"
                                         width={152}
                                         height={23}
-                                        className="invert"
+                                        className="svg-main-logo"
                                     />
                                     <div className="flex-justify-end">
                                         <ModeToggle />
@@ -79,9 +79,6 @@ export default function MobileNav() {
                                             </li>
                                         )
                                     })}
-                                    {/* <li className="flex-center cursor-pointer gap-2 p-4">
-                                        <UserButton afterSignOutUrl="/" showName />
-                                    </li> */}
                                 </menu>
 
                             </>

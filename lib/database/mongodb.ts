@@ -22,3 +22,4 @@ export function connectToCluster/* <Type extends Document> */(collectionName: st
 
 export const collectionUser = connectToCluster/* <IUser> */('user')
 export const collectionImage = connectToCluster/* <IImage> */('image')
+export const collectionTransaction = connectToCluster/* <IImage> */('transaction')

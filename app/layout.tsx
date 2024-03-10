@@ -15,7 +15,13 @@ const IBM_plex = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "AI Saas",
+  title: {
+    template: '%s | AI Saas',
+    default: 'AI Saas',
+  },
+  icons: {
+    icon: "https://www.svgrepo.com/show/327539/sparkles.svg"
+  },
   description: "AI-powered image generator",
 };
 

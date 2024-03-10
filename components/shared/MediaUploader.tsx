@@ -89,7 +89,7 @@ export default function MediaUploader({
                                     alt="Add Image"
                                     width={24}
                                     height={24}
-                                    className="invert"
+                                    className="svg-main-logo"
                                 />
                             </div>
                             <p className="p-14-medium">Click here to upload the image</p>

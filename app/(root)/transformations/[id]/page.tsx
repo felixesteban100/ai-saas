@@ -1,5 +1,4 @@
 import { auth } from "@clerk/nextjs";
-import Image from "next/image";
 import Link from "next/link";
 
 import Header from "@/components/shared/Header";
@@ -7,12 +6,24 @@ import TransformedImage from "@/components/shared/TransformedImage";
 import { Button } from "@/components/ui/button";
 import { getImageById } from "@/lib/actions/image.actions";
 import { getImageSize } from "@/lib/utils";
+// import { CldImage } from "next-cloudinary";
+import CldImageForServerComponents from "@/components/shared/CldImageForServerComponent";
+import { DeleteConfirmation } from "@/components/shared/DeleteConfirmation";
+import { Metadata } from "next";
 // import { DeleteConfirmation } from "@/components/shared/DeleteConfirmation";
+
+export const metadata: Metadata = {
+  title: 'Transformation',
+}
 
 export default async function ImageDetails({ params: { id } }: SearchParamProps) {
   const { userId } = auth();
 
+  if (id === 'undefined') return <>Undefined image id</>
+
   const image = await getImageById(id);
+
+
 
   return (
     <>
@@ -63,11 +74,11 @@ export default async function ImageDetails({ params: { id } }: SearchParamProps)
           <div className="flex flex-col gap-4">
             <h3 className="h3-bold text-primary">Original</h3>
 
-            <Image
+            <CldImageForServerComponents
               width={getImageSize(image.transformationType, image, "width")}
               height={getImageSize(image.transformationType, image, "height")}
-              src={image.secureURL}
-              alt="image"
+              src={image.publicId}
+              alt={image.title}
               className="transformation-original_image"
             />
           </div>
@@ -91,7 +102,7 @@ export default async function ImageDetails({ params: { id } }: SearchParamProps)
               </Link>
             </Button>
 
-            {/* <DeleteConfirmation imageId={image._id} /> */}
+            <DeleteConfirmation imageId={image._id} />
           </div>
         )}
       </section>

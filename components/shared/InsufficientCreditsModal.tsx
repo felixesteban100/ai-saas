@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import {
@@ -27,7 +27,7 @@ export const InsufficientCreditsModal = () => {
               className="border-0 p-0 hover:bg-transparent"
               onClick={() => router.push("/profile")}
             >
-              <Image
+              <img
                 src="/assets/icons/close.svg"
                 alt="credit coins"
                 width={24}
@@ -37,7 +37,7 @@ export const InsufficientCreditsModal = () => {
             </AlertDialogCancel>
           </div>
 
-          <Image
+          <img
             src="/assets/images/coins.png"
             alt="credit coins"
             width={462}

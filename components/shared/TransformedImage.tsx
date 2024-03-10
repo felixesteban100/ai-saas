@@ -7,7 +7,7 @@ import { dataUrl, debounce, download, getImageSize } from "@/lib/utils";
 import { PlaceholderValue } from "next/dist/shared/lib/get-img-props";
 
 
-export default function TransformedImage({ image, type, title, transformationConfig, isTransforming, setIsTransforming, hasDownload = true }: TransformedImageProps) {
+export default function TransformedImage({ image, type, title, transformationConfig, isTransforming, setIsTransforming, hasDownload = false }: TransformedImageProps) {
     function downloadHandler(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         event.preventDefault()
 
@@ -33,7 +33,7 @@ export default function TransformedImage({ image, type, title, transformationCon
                             alt='Download'
                             width={24}
                             height={24}
-                            className="pb-[6px] invert"
+                            className="pb-[6px] svg-color"
                         />
                     </Button>
                 )}
@@ -62,7 +62,7 @@ export default function TransformedImage({ image, type, title, transformationCon
 
                     {isTransforming && (
                         <div
-                            className="transforming-loader"
+                            className="transforming-loader animate-pulse"
                         >
                             <Image
                                 src="/assets/icons/spinner.svg"
@@ -70,7 +70,7 @@ export default function TransformedImage({ image, type, title, transformationCon
                                 height={50}
                                 alt="spinner"
                             />
-                            <p className="text-foreground/70">Please wait...</p>
+                            <p className="text-primary-forerground">Please wait...</p>
                         </div>
                     )}
                 </div>

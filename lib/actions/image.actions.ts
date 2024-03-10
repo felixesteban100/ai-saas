@@ -1,10 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-// import { connectToDatabase } from "../database/mongoose";
 import { handleError } from "../utils";
-import User from "../database/models/user.model";
-// import Image from "../database/models/image.model";
 import { redirect } from "next/navigation";
 import { collectionUser, collectionImage } from "../database/mongodb";
 import { ObjectId } from "mongodb";
@@ -57,13 +54,13 @@ export async function updateImage({ image, userId, path }: UpdateImageParams) {
 }
 
 //DELETE IMAGE
-export async function deleteImage(imageId: string, userId: string) {
+export async function deleteImage(imageId: string/* , userId: string */) {
     try {
         // await connectToDatabase()
         //I ADDED THIS VERIFICATION
         // const imageToUpdate = await Image.findById(imageId)
         const imageToUpdate = await collectionImage.findOne({ _id: new ObjectId(imageId) })
-        if (imageToUpdate && imageToUpdate.author.toHexString() !== userId) throw new Error("Unathorized")
+        if (imageToUpdate /* && imageToUpdate.author.toHexString() !== userId */) throw new Error("Unathorized")
         //I ADDED THIS VERIFICATION
 
 
@@ -159,3 +156,32 @@ export async function getAllImages({ limit = 9, page = 1, searchQuery = "" }: {
         handleError(error)
     }
 }
+
+export async function getUserImages({
+    limit = 9,
+    page = 1,
+    userId,
+  }: {
+    limit?: number;
+    page: number;
+    userId: string;
+  }) {
+    try {
+      const skipAmount = (Number(page) - 1) * limit;
+
+      const images = await collectionImage.find({ 'author._id': new ObjectId(userId) })
+        .sort({ updatedAt: -1 })
+        .skip(skipAmount)
+        .limit(limit)
+        .toArray();
+  
+      const totalImages = (await collectionImage.find({ 'author._id': new ObjectId(userId) }).toArray()).length;
+  
+      return {
+        data: JSON.parse(JSON.stringify(images)),
+        totalPages: Math.ceil(totalImages / limit),
+      };
+    } catch (error) {
+      handleError(error);
+    }
+  }
